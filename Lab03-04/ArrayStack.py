@@ -29,7 +29,7 @@ class ArrayStack:
             print("Underflow")
         else:
             index = self.data[-1]
-            print(index)
+            return index
 
     def printStack(self):
         print(self.data)
@@ -39,6 +39,7 @@ class ArrayStack:
 # mystack.size()
 # mystack.pop()
 # mystack.printStack()
+
 
 
 
@@ -85,22 +86,28 @@ def copyStack(s1, s2): # 4.2
 
 
 def infixToPostfix(exp): # 4.3
-    stack_i = ArrayStack; stack_i.push(10); stack_i.push(20); stack_i.push(30)
+    stack_p = ArrayStack()
     txt = ""
-    # for i in exp:
-        # if i == "*" or i == "/":
-        #     stack_i.push(i)
+    for i in exp:
+        if i == "*" or i == "/":
+            stack_p.push(i)
+    if stack_p.stackTop() == "*" or stack_p.stackTop() == "/" or stack_p.stackTop() == "+":
+        print("Yes")
+        
         # elif i == "-" or i == "+":
-        #     if stack_i[-1] == "*" or stack_i[-1] == "/": # | + * |
-        #         x = stack_i.pop()
+        #     if stack_p[-1] == "*" or stack_p[-1] == "/":
+        #         x = stack_p.pop()
         #         txt += x
-        # else:
+        # if i != "*" and i != "/" and i != "+" and i != "-": 
         #     txt += i
-        # stack_i.push(i)
+    #     stack_p.push(i)
     
-    # txt.printStack()
-                
+    
+    
+    # print(txt)
+    stack_p.printStack()
 infixToPostfix("A+B*C-D/E")
-stack_i = ArrayStack; stack_i.push(10); stack_i.push(20); stack_i.push(30)
-stack_i.printStack()
+
+
+
 
