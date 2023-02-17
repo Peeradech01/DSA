@@ -6,7 +6,7 @@ class ArrayStack:
         self.data = []
 
     def size(self):
-        print(len(self.data)) 
+        return (len(self.data)) 
 
     def is_empty(self):
         if self.data == []:
@@ -19,14 +19,14 @@ class ArrayStack:
 
     def pop(self):
         if self.data == []:
-            print("UnderFlow")
+            return "UnderFlow"
         else:
             x = self.data.pop()
             return x
 
     def stackTop(self):
         if self.data == []:
-            print("Underflow")
+            return "Underflow"
         else:
             index = self.data[-1]
             return index
@@ -87,27 +87,26 @@ def copyStack(s1, s2): # 4.2
 
 def infixToPostfix(exp): # 4.3
     stack_p = ArrayStack()
-    txt = ""
+    result = ""
+
     for i in exp:
-        if i == "*" or i == "/":
+        if (i == "*" or i == "/"):
             stack_p.push(i)
-    if stack_p.stackTop() == "*" or stack_p.stackTop() == "/" or stack_p.stackTop() == "+":
-        print("Yes")
-        
-        # elif i == "-" or i == "+":
-        #     if stack_p[-1] == "*" or stack_p[-1] == "/":
-        #         x = stack_p.pop()
-        #         txt += x
-        # if i != "*" and i != "/" and i != "+" and i != "-": 
-        #     txt += i
-    #     stack_p.push(i)
-    
-    
-    
-    # print(txt)
-    stack_p.printStack()
-infixToPostfix("A+B*C-D/E")
+        elif i == "-" or i == "+":
+            while not stack_p.is_empty(): 
+                x = stack_p.pop()
+                result += x
+            
+            stack_p.push(i)
+        else:
+            result += i
 
+    for i in range(0, stack_p.size()):
+        y = stack_p.pop()
+        result += y
 
+    print ("Postfix of %s" %exp +" is %s" %result)
+    
+infixToPostfix("A+B*C-D/E") #ABC*+DE/-
 
 
