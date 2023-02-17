@@ -96,17 +96,12 @@ def infixToPostfix(exp): # 4.3
             while not stack_p.is_empty(): 
                 x = stack_p.pop()
                 result += x
-            
             stack_p.push(i)
         else:
             result += i
-
     for i in range(0, stack_p.size()):
         y = stack_p.pop()
         result += y
-
     print ("Postfix of %s" %exp +" is %s" %result)
     
 infixToPostfix("A+B*C-D/E") #ABC*+DE/-
-
-
